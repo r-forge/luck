@@ -1,8 +1,8 @@
 Package: luck
 Type: Package
 Title: Generalized iLUCK models
-Version: 1.0
-Date: 2013-08-22
+Version: 0.9
+Date: 2013-08-23
 Authors@R: c(person("Gero", "Walter", role = c("aut", "cre"),
                     email = "Gero.Walter@stat.uni-muenchen.de"),
              person("Norbert", "Krautenbacher", role = "aut"))
