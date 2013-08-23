@@ -1,0 +1,167 @@
+
+R version 3.0.1 (2013-05-16) -- "Good Sport"
+Copyright (C) 2013 The R Foundation for Statistical Computing
+Platform: x86_64-pc-linux-gnu (64-bit)
+
+R is free software and comes with ABSOLUTELY NO WARRANTY.
+You are welcome to redistribute it under certain conditions.
+Type 'license()' or 'licence()' for distribution details.
+
+R is a collaborative project with many contributors.
+Type 'contributors()' for more information and
+'citation()' on how to cite R or R packages in publications.
+
+Type 'demo()' for some demos, 'help()' for on-line help, or
+'help.start()' for an HTML browser interface to help.
+Type 'q()' to quit R.
+
+> # ---------------------------------------------------------------------------- #
+> # ---------------------------------------------------------------------------- #
+> #                                                 
+> # S4 implementation of generalized iLUCK models   
+> # -- Tests for utility functions --             
+> #                                                 
+> # ---------------------------------------------------------------------------- #
+> # ---------------------------------------------------------------------------- #
+> 
+> library(luck)
+Loading required package: TeachingDemos
+
+Attaching package: 'luck'
+
+The following object is masked from 'package:utils':
+
+    data
+
+> library(testthat)
+> 
+> # Tests for wrapOptim()
+> 
+> testfu <- function (.n0y0, andarg) {
++   if (andarg) return(.n0y0[1]^2 + .n0y0[2])
++   else return (.n0y0[2]^2 + .n0y0[1])
++ }
+> 
+> # minimize
+> wrapOptim(par = c(1,1), fn = testfu, lower = c(1,1), upper = c(5,5), andarg = F)
+$par
+[1] 1 1
+
+$value
+[1] 2
+
+$counts
+function gradient 
+       1        1 
+
+$convergence
+[1] 0
+
+$message
+[1] "CONVERGENCE: NORM OF PROJECTED GRADIENT <= PGTOL"
+
+> wrapOptim(par = c(1,1), fn = testfu, lower = c(1,1), upper = c(5,5), andarg = T)
+$par
+[1] 1 1
+
+$value
+[1] 2
+
+$counts
+function gradient 
+       1        1 
+
+$convergence
+[1] 0
+
+$message
+[1] "CONVERGENCE: NORM OF PROJECTED GRADIENT <= PGTOL"
+
+> 
+> wrapOptim(par = c(1,1), fn = testfu, lower = c(1,1), upper = c(1,1), andarg = T)
+$par
+[1] 1 1
+
+$value
+[1] 2
+
+> wrapOptim(par = c(1,5), fn = testfu, lower = c(1,1), upper = c(1,5), andarg = T)
+$value
+[1] 2
+
+$par
+[1] 1 1
+
+> wrapOptim(par = c(2,1), fn = testfu, lower = c(1,1), upper = c(5,1), andarg = T)
+$value
+[1] 2
+
+$par
+[1] 1 1
+
+> 
+> # maximize
+> wrapOptim(par = c(1,1), fn = testfu, lower = c(1,1), upper = c(5,5), andarg = F, 
++           control = list(fnscale=-1))
+$par
+[1] 5 5
+
+$value
+[1] 30
+
+$counts
+function gradient 
+       5        5 
+
+$convergence
+[1] 0
+
+$message
+[1] "CONVERGENCE: NORM OF PROJECTED GRADIENT <= PGTOL"
+
+> wrapOptim(par = c(1,1), fn = testfu, lower = c(1,1), upper = c(5,5), andarg = T,
++           control = list(fnscale=-1))
+$par
+[1] 5 5
+
+$value
+[1] 30
+
+$counts
+function gradient 
+       5        5 
+
+$convergence
+[1] 0
+
+$message
+[1] "CONVERGENCE: NORM OF PROJECTED GRADIENT <= PGTOL"
+
+> 
+> wrapOptim(par = c(1,1), fn = testfu, lower = c(1,1), upper = c(1,1), andarg = T, control = list(fnscale=-1))
+$par
+[1] 1 1
+
+$value
+[1] 2
+
+> wrapOptim(par = c(1,5), fn = testfu, lower = c(1,1), upper = c(1,5), andarg = F, control = list(fnscale=-1))
+$value
+[1] 26
+
+$par
+[1] 1 5
+
+> wrapOptim(par = c(2,1), fn = testfu, lower = c(1,1), upper = c(5,1), andarg = T, control = list(fnscale=-1))
+$value
+[1] 26
+
+$par
+[1] 5 1
+
+> 
+> #
+> 
+> proc.time()
+   user  system elapsed 
+  1.112   0.084   1.188 
