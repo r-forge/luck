@@ -14,7 +14,7 @@ This function plots the prior or posterior set of cumulative distribution functi
 represented by a \code{\linkS4class{LuckModel}}.
 It is currently implemented for one-dimensional distributions only.
 To represent the set of distributions, a pointwise mininum curve and pointwise maximum curve is plotted,
-i.e., for each \eqn{x}, \eqn{min F(x)} and \eqn{max F(x)}
+i.e., for each \eqn{x}, \eqn{\min F(x)}{min F(x)} and \eqn{\max F(x)}{max F(x)}
 are calculated and drawn for a range of \eqn{x} values,
 and the area between them can be colored or shaded.
 }
@@ -88,6 +88,15 @@ The function relies on the function \code{\link{singleCdf}},
 which, for an object of a concrete subclass of \code{\linkS4class{LuckModel}},
 returns values of the cdf for a single distribution of the prior's parametric family.
 }
+%\section{Methods}{
+%\describe{
+%\item{\code{signature(object = "ScaledNormalLuckModel")}}{
+%Ignore this. I just tried to make \code{R CMD check} happy.
+%}
+%\item{\code{signature(object = "ExponentialLuckModel")}}{
+%Ignore this. I just tried to make \code{R CMD check} happy.
+%}
+%}}
 \author{
 Gero Walter
 }
