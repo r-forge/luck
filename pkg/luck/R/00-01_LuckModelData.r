@@ -149,7 +149,7 @@ setMethod("rawData", "LuckModelData", function(object) object@rawData)
 # replacement methods
 
 if(!isGeneric("tauN<-"))
- setGeneric("tauN<-", function(object, ...) standardGeneric("tauN<-"))
+ setGeneric("tauN<-", function(object, value, ...) standardGeneric("tauN<-"))
 setReplaceMethod("tauN", "LuckModelData", function(object, value){
  # tauN shuld not be changed if there is some raw data in the object
  if (!is.null(rawData(object)))
@@ -167,14 +167,14 @@ setReplaceMethod("tauN", "LuckModelData", function(object, value){
 })
 
 if(!isGeneric("tau<-"))
- setGeneric("tau<-", function(object, ...) standardGeneric("tau<-"))
+ setGeneric("tau<-", function(object, value, ...) standardGeneric("tau<-"))
 setReplaceMethod("tau", "LuckModelData", function(object, value){
  tauN(object)[, 1] <- value
  object
 })
 
 if(!isGeneric("n<-"))
- setGeneric("n<-", function(object, ...) standardGeneric("n<-"))
+ setGeneric("n<-", function(object, value, ...) standardGeneric("n<-"))
 setReplaceMethod("n", "LuckModelData", function(object, value){
  tauN(object)[, 2] <- value
  object

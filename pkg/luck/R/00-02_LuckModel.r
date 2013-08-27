@@ -95,7 +95,7 @@ setMethod("data", "LuckModel", function(object) object@data)
 # ---------------------------------------------------------------------------- #
 
 if(!isGeneric("n0<-"))
- setGeneric("n0<-", function(object, ...) standardGeneric("n0<-"))
+ setGeneric("n0<-", function(object, value, ...) standardGeneric("n0<-"))
 setReplaceMethod("n0", "LuckModel", function(object, value){
  .y0 <- y0(object)
  .data <- data(object)
@@ -104,7 +104,7 @@ setReplaceMethod("n0", "LuckModel", function(object, value){
 })
 
 if(!isGeneric("y0<-"))
- setGeneric("y0<-", function(object, ...) standardGeneric("y0<-"))
+ setGeneric("y0<-", function(object, value, ...) standardGeneric("y0<-"))
 setReplaceMethod("y0", "LuckModel", function(object, value){
  .n0 <- n0(object)
  .data <- data(object)
@@ -113,7 +113,7 @@ setReplaceMethod("y0", "LuckModel", function(object, value){
 })
 
 if(!isGeneric("data<-"))
- setGeneric("data<-", function(object, ...) standardGeneric("data<-"))
+ setGeneric("data<-", function(object, value, ...) standardGeneric("data<-"))
 setReplaceMethod("data", "LuckModel", function(object, value){
  .n0 <- n0(object)
  .y0 <- y0(object)
