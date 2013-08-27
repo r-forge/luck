@@ -98,7 +98,7 @@ ScaledNormalData <- function (arg1 = NULL, arg2 = NULL, data = NULL,
 # replacement method for slot rawData
 # (other replacement methods are inherited from LuckModelData)
 if(!isGeneric("rawData<-"))
- setGeneric("rawData<-", function(object, ...) standardGeneric("rawData<-"))
+ setGeneric("rawData<-", function(object, value, ...) standardGeneric("rawData<-"))
 setReplaceMethod("rawData", "ScaledNormalData", function(object, value){
  # create entirely new object with the new data
  ScaledNormalData(data = value)
