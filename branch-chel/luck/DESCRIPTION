@@ -1,0 +1,18 @@
+Package: luck
+Type: Package
+Title: Generalized iLUCK models
+Version: 0.9
+Date: 2013-08-23
+Authors@R: c(person("Gero", "Walter", role = c("aut", "cre"),
+                    email = "Gero.Walter@stat.uni-muenchen.de"),
+             person("Norbert", "Krautenbacher", role = "aut"))
+Description: Generalized iLUCK-models are a way to define sets of priors based  
+  on conjugate priors, with the property that the set of posteriors, obtained by
+  updating each prior in the set by Bayes' rule, is still easy to handle.
+  Generalized iLUCK-models belong to the domain of imprecise probability (or
+  interval probability models), allow to include non-stochastic uncertainty
+  ('ambiguity') in Bayesian analysis, and lead to reasonable inferences in case
+  of prior-data conflict.
+License: Artistic-2.0
+Depends: R (>= 2.14.0), methods, TeachingDemos (>= 2.8)
+Suggests: testthat

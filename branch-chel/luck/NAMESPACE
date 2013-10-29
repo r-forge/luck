@@ -1,0 +1,32 @@
+exportPattern("^[[:alpha:]]+")
+exportMethods(
+    "cdfplot",
+    "data<-",
+    "data",
+    "n0<-",
+    "n0",
+    "n<-",
+    "n",
+    "plot",
+    "rawData<-",
+    "rawData",
+    "show",
+    "singleCdf",
+    "singleHdi",
+    "tau<-",
+    "tau",
+    "tauN<-",
+    "tauN",
+    "unionHdi",
+    "y0<-",
+    "y0" 
+)
+exportClasses(
+    "ExponentialData",
+     "ExponentialLuckModel",
+     "LuckModel",
+     "LuckModelData",
+     "OptionalMatrix",
+     "ScaledNormalData",
+     "ScaledNormalLuckModel" 
+)

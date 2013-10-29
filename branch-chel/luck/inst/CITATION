@@ -1,0 +1,33 @@
+citHeader("To cite the 'luck' package in publications use:")
+
+year <- sub(".*(2[[:digit:]]{3})-.*", "\\1", meta$Date, perl = TRUE)
+vers <- paste("R package version", meta$Version)
+
+citEntry(entry="Manual",
+         title = "luck: Generalized iLUCK models in R",
+         author = personList(as.person("Gero Walter"),
+                             as.person("Norbert Krautenbacher")),
+         year = year,
+         note = vers,
+
+         textVersion =
+         paste("Gero Walter and Norbert Krautenbacher (",
+               year,
+               "). luck: Generalized iLUCK models in R. ",
+               vers, ".", sep=""))
+
+citEntry(entry="Article",
+         title  = "Imprecision and Prior-data Conflict in Generalized {B}ayesian Inference",
+         author = personList(as.person("Gero Walter"),
+                             as.person("Thomas Augustin")),
+         journal = "Journal of Statistical Theory and Practice",
+         pages   = "255--271",
+         volume  = "3",
+         year    = "2009",
+         issn    = "1559-8616",
+
+         textVersion =
+         paste("Gero Walter and Thomas Augustin (2009)",
+  	       "Imprecision and Prior-data Conflict in Generalized Bayesian Inference.",
+               "Journal of Statistical Theory and Practice 3:255-271.")
+)

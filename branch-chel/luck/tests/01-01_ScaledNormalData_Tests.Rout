@@ -1,0 +1,79 @@
+
+R version 3.0.1 (2013-05-16) -- "Good Sport"
+Copyright (C) 2013 The R Foundation for Statistical Computing
+Platform: x86_64-pc-linux-gnu (64-bit)
+
+R is free software and comes with ABSOLUTELY NO WARRANTY.
+You are welcome to redistribute it under certain conditions.
+Type 'license()' or 'licence()' for distribution details.
+
+R is a collaborative project with many contributors.
+Type 'contributors()' for more information and
+'citation()' on how to cite R or R packages in publications.
+
+Type 'demo()' for some demos, 'help()' for on-line help, or
+'help.start()' for an HTML browser interface to help.
+Type 'q()' to quit R.
+
+> # ---------------------------------------------------------------------------- #
+> # ---------------------------------------------------------------------------- #
+> #                                                 
+> # S4 implementation of generalized iLUCK models   
+> # -- Tests for Class ScaledNormalData incl. show method --             
+> #                                                 
+> # ---------------------------------------------------------------------------- #
+> # ---------------------------------------------------------------------------- #
+> 
+> library(luck)
+Loading required package: TeachingDemos
+
+Attaching package: 'luck'
+
+The following object is masked from 'package:utils':
+
+    data
+
+> library(testthat)
+> 
+> # constructor methods
+> scndata1 <- ScaledNormalData(1:10)
+> scndata1 <- ScaledNormalData(data=1:10)
+> scndata2 <- ScaledNormalData(10, 5)
+> scndata2 <- ScaledNormalData(mean=10, n=5)
+> scndata2 <- ScaledNormalData(mean=10, 5)
+> scndata2 <- ScaledNormalData(10, n=5)
+> set.seed(8552)
+> scndata3 <- ScaledNormalData(10, 5, sim=TRUE)
+> scndata3 <- ScaledNormalData(mean=10, n=5, sim=TRUE)
+> scndata3 <- ScaledNormalData(mean=10, 5, sim=TRUE)
+> scndata3 <- ScaledNormalData(10, n=5, sim=TRUE)
+> data1 <- LuckModelData(5, 2)
+> scndata4 <- ScaledNormalData(data1)
+> 
+> # replacement methods
+> set.seed(8553)
+> rawData(scndata1) <- rnorm(10)
+> expect_error(tauN(scndata1) <- matrix(c(0,10), ncol=2)) # error: should not relace tauN if raw data is present
+> expect_error(tau(scndata1) <- 0)                        # error: should not relace tauN if raw data is present
+> expect_error(n(scndata1) <- 10)                         # error: should not relace tauN if raw data is present
+> tauN(scndata2) <- matrix(c(0,10), ncol=2)
+> tau(scndata2) <- 0.5
+> n(scndata2) <- 20
+> 
+> # show method
+> scndata1
+ScaledNormalData object containing data of sample size 10 
+ with mean 0.3485074 and variance 0.7682868 .
+> scndata2
+ScaledNormalData object containing a mean of 0.025 for sample size 20 .
+> scndata3
+ScaledNormalData object containing data of sample size 5 
+ with mean 9.528482 and variance 0.7526122 .
+> scndata4
+ScaledNormalData object containing a mean of 2.5 for sample size 2 .
+> 
+> #
+> 
+> proc.time()
+   user  system elapsed 
+  1.196   0.088   1.316 
